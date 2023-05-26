@@ -62,6 +62,8 @@ export class DoctorController {
     }
    }
 
+   
+
    @Delete("/:id")
    async deleteDoctor(@Res() response, @Param("id") doctorID:string){
     try {
