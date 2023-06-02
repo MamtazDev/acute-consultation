@@ -11,8 +11,8 @@ import { UserController } from './user/user.controller';
 
 @Module({
   imports: [
-    // MongooseModule.forRoot(`mongodb+srv://mamtazfreelancer:f7FcczeDomuZ5F3L@cluster0.6ds5s8q.mongodb.net/`,{dbName:'doctorPortal'}),
-    MongooseModule.forRoot(`mongodb://localhost:27017`,{dbName:'doctorPortal'}),
+    MongooseModule.forRoot(`mongodb+srv://mamtazfreelancer:f7FcczeDomuZ5F3L@cluster0.6ds5s8q.mongodb.net/`,{dbName:'doctorPortal'}),
+    // MongooseModule.forRoot(`mongodb://localhost:27017`,{dbName:'doctorPortal'}),
     MongooseModule.forFeature([{name:'Doctor', schema:DoctorSchema},
     { name: 'User', schema: UserSchema }])
   ],
