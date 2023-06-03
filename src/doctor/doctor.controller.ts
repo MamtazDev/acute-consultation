@@ -3,11 +3,12 @@ import { DoctorService } from './doctor.service';
 import { CreateDoctorDto } from 'src/dto/create-doctor.dto';
 import { UpdateDoctorDto } from 'src/dto/update-doctor.dto';
 
-@Controller('doctor')
+@Controller('doctor/all')
 export class DoctorController {
     constructor(private readonly doctorService:DoctorService){
-
+        
     }
+
    @Post()
    async createDoctor(@Res() response, @Body() crateDoctorDto:CreateDoctorDto ){
     try {
@@ -24,6 +25,20 @@ export class DoctorController {
         })
     }
    }
+
+   @Get("/details")
+   async getDoctorsDetails(@Res() response){
+    try {
+        const doctorsData = await this.doctorService.getAllDoctors()
+        console.log("New controller:", doctorsData)
+        return response.status(HttpStatus.OK).json({
+            doctorsData
+        })
+    } catch (err) {
+        return response.status(err.status).json(err.response)
+    }
+   }
+
 
    @Get()
    async getDoctors(@Res() response){
